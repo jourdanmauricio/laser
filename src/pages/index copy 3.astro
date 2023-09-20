@@ -31,7 +31,11 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <!-- Image -->
       <div class="absolute top-0 md:relative md:w-1/2 h-full w-full -z-10">
-        <div class="background-image"></div>
+        <img
+          class="h-full w-full object-cover object-top"
+          src="/laser/images/hero-img.png"
+          alt="Imagen de sala de ateción"
+        />
       </div>
     </div>
   </div>
@@ -119,44 +123,6 @@ import Layout from '../layouts/Layout.astro';
       100% {
         margin-top: 0;
       }
-    }
-  }
-  .background-container {
-    position: relative;
-    width: 100%;
-    /* height: 100%; */
-    height: 400px;
-    overflow: hidden;
-  }
-
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: top;
-    animation: changeBackground 8s infinite;
-    opacity: 0; /* Inicialmente ocultar la imagen */
-  }
-
-  @keyframes changeBackground {
-    0% {
-      background-image: url('/laser/images/hero-img.png');
-      opacity: 1; /* Mostrar la imagen al principio */
-    }
-    33% {
-      background-image: url('/laser/images/hero-img1.png');
-      opacity: 1; /* Mostrar la siguiente imagen */
-    }
-    66% {
-      background-image: url('/laser/images/hero-img2.png');
-      opacity: 1; /* Mostrar la siguiente imagen */
-    }
-    100% {
-      background-image: url('/laser/images/hero-img.png');
-      opacity: 1; /* Mostrar la primera imagen de nuevo */
     }
   }
 </style>
