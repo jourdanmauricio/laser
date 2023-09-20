@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout pageTitle="Welcome to Astro.">
+  <section
+    class="relative flex flex-col text-center md:text-left justify-end md:items-center md:flex-row w-full pt-10 md:px-20 hero overflow-hidden z-0"
+  >
+    <h2 class="text-4xl text-primary mt-8 lg:hidden text-center z-10">
+      Lorem Ipsum
+    </h2>
+    <div
+      class="flex flex-col justify-end gap-4 md:gap-12 w-full p-10 flex-grow"
+    >
+      <h2 class="hidden md:block text-4xl text-primary">Lorem Ipsum</h2>
+      <p class="text-md text-slate-950">
+        Neque porro quisquam est qui dolorem ipsum<br /> quia dolor sit amet,
+        consectetur, adipisci velit..."
+      </p>
+
+      <button class="btn py-2 px-8 rounded block mx-auto md:ml-0">
+        Contáctanos</button
+      >
+    </div>
+    <!-- Image -->
+    <div class="absolute top-32 h-[95vh] md:relative w-full -z-10">
+      <img
+        class="h-full w-full object-cover object-top"
+        src="/laser/images/hero-img.png"
+        alt="Imagen de sala de ateción"
+      />
+    </div>
+  </section>
+
+  <main>
+    Hola
+
+    <p class="font-sans ...">The quick brown fox ...</p>
+    <p class="font-serif ...">The quick brown fox ...</p>
+    <p class="font-mono ...">The quick brown fox ...</p>
+
+    <h1>Hola</h1>
+    <h1 class="font-primary">Hola</h1>
+  </main>
+</Layout>
+
+<style>
+  .hero {
+    /* height: calc(100vh - 64px); */
+    height: calc(100vh);
+    background:
+      linear-gradient(90deg, #80cde000, #41e1d166),
+      url(/laser/images/modern-hospital_opt.jpg) no-repeat center center fixed;
+    background-size: cover;
+  }
+</style>

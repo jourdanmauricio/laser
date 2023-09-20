@@ -1,0 +1,130 @@
+<nav
+  class="fixed flex justify-between items-center py-2 px-4 lg:px-12 bg-slate-200 z-50 max-w-[1440px] w-full lg:bg-transparent lg:absolute"
+>
+  <!-- Menu mobile -->
+  <label
+    for="menu-mobile"
+    class="cursor-pointer block lg:hidden"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      class="fill-black"
+      ><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg
+    >
+  </label>
+
+  <input
+    type="checkbox"
+    id="menu-mobile"
+    class="cursor-pointer hidden absolute left-0 peer"
+  />
+  <!-- Fin menu mobile -->
+
+  <h1 class="text-slate-950 text-3xl font-semibold">
+    Laser<span class="text-primary">Med</span>
+  </h1>
+  <div
+    class="absolute top-[60px] bottom-0 lg:relative lg:top-auto w-full lg:w-fit -left-full lg:left-auto peer-checked:left-0 transition-all duration-500"
+  >
+    <ul
+      class="text-black h-screen lg:h-auto flex flex-col lg:flex-row items-center justify-center gap-8 bg-slate-200 lg:bg-transparent text-xl"
+    >
+      <li>
+        <a
+          href="/laser"
+          class={`${
+            Astro.url.pathname.replaceAll('/', '') === 'laser'
+              ? 'text-secondary'
+              : ''
+          } menu__item anim__bottom to__center`}
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          class={`${
+            Astro.url.pathname.replaceAll('/', '') === 'laseracerca-de-mi'
+              ? 'text-secondary'
+              : ''
+          } menu__item anim__bottom to__center`}
+          href="/laser/acerca-de-mi"
+          >Acerca de mi</a
+        >
+      </li>
+      <li>
+        <a
+          class={`${
+            Astro.url.pathname.replaceAll('/', '') === 'lasertratamientos'
+              ? 'text-secondary'
+              : ''
+          } menu__item anim__bottom to__center`}
+          href="/laser/tratamientos"
+          >Tratamientos</a
+        >
+      </li>
+      <li>
+        <a
+          class={`${
+            Astro.url.pathname.replaceAll('/', '') === 'laserblog'
+              ? 'text-secondary'
+              : ''
+          } menu__item anim__bottom to__center`}
+          href="/laser/blog"
+          >Blog</a
+        >
+      </li>
+      <li>
+        <a
+          class={`${
+            Astro.url.pathname.replaceAll('/', '') === 'lasercontacto'
+              ? 'text-secondary'
+              : ''
+          } menu__item anim__bottom to__center`}
+          href="/laser/contacto"
+          >Contacto</a
+        >
+      </li>
+    </ul>
+  </div>
+  <a
+    href="#"
+    class="btn p-2"
+    >Solicitar cita</a
+  >
+</nav>
+<style>
+  /**********************/
+  /***   ANIMATIONS   ***/
+  /**********************/
+  .menu__item {
+    position: relative;
+    display: block;
+    /* padding: 4px 8px; */
+  }
+  .anim__bottom::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    bottom: -1px;
+    width: 0%;
+    text-align: center;
+    background: var(--secondary-color);
+    height: 1px;
+    transition:
+      width 0.5s ease,
+      left 0.5s ease,
+      right 0.5s ease;
+  }
+  .anim__bottom:hover::after {
+    width: 100%;
+  }
+  .to__center::after {
+    left: 50%;
+  }
+  .to__center:hover::after {
+    left: 0%;
+  }
+</style>
