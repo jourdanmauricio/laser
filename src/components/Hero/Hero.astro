@@ -1,56 +1,25 @@
-<div class="flex flex-col pt-20 md:px-20 hero overflow-hidden">
-  <div class="flex justify-center md:justify-between">
-    <div
-      class="text-3xl md:text-4xl flex gap-2.5 justify-center md:justify-start"
-    >
-      <h2 class="text-primary m-0">Lorem Ipsum</h2>
-      <div class="overflow-hidden font-semibold h-[2.25rem] md:h-10">
-        <ul class="text-red-500 animation mt-0">
-          <li>Lorem 1</li>
-          <li>Lorem 2</li>
-          <li>Lorem 3</li>
-        </ul>
+---
+import Menu from '../../components/Menu/Menu.astro';
+---
+
+<div class="hero overflow-hidden">
+  <Menu />
+  <div class="flex flex-col pt-10 md:px-20 h-screen">
+    <div class="flex justify-center md:justify-between">
+      <div
+        class="text-3xl md:text-4xl flex gap-2.5 justify-center md:justify-start"
+      >
+        <h2 class="text-primary m-0">Lorem Ipsum</h2>
+        <div class="overflow-hidden font-semibold h-[2.25rem] md:h-10">
+          <ul class="text-red-500 animation mt-0">
+            <li>Lorem 1</li>
+            <li>Lorem 2</li>
+            <li>Lorem 3</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="hidden gap-8 md:flex">
-      <a href="#"
-        ><img
-          src="/laser/icons/facebook.svg"
-          alt="Link to Facebook"
-          width="20"
-        /></a
-      >
-      <a href="#"
-        ><img
-          src="/laser/icons/instagram.svg"
-          alt="Link to Instagram"
-          width="20"
-        /></a
-      >
-      <a href="#"
-        ><img
-          src="/laser/icons/whatsapp.svg"
-          alt="Link to Whatsapp"
-          width="20"
-        /></a
-      >
-    </div>
-  </div>
-
-  <div
-    class="relative flex md:flex-row items-end md:items-center h-full z-0 overflow-hidden"
-  >
-    <div class="md:w-1/2 flex flex-col gap-8 md:gap-16 z-10 p-4">
-      <p class="text-xl text-slate-950">
-        Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-        consectetur, adipisci velit..."
-      </p>
-
-      <button class="btn py-2 px-8 rounded block mx-auto md:ml-0">
-        Contáctanos</button
-      >
-      <div class="flex gap-8 md:hidden justify-end">
+      <div class="hidden gap-8 md:flex">
         <a href="#"
           ><img
             src="/laser/icons/facebook.svg"
@@ -74,9 +43,47 @@
         >
       </div>
     </div>
-    <!-- Image -->
-    <div class="absolute top-0 md:relative md:w-1/2 h-full w-full -z-10">
-      <div class="background-image"></div>
+
+    <div
+      class="relative flex md:flex-row items-end md:items-center h-full z-0 overflow-hidden"
+    >
+      <div class="md:w-1/2 flex flex-col gap-8 md:gap-16 z-10 p-4">
+        <p class="text-xl text-slate-950">
+          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+          consectetur, adipisci velit..."
+        </p>
+
+        <button class="btn py-2 px-8 rounded block mx-auto md:ml-0">
+          Contáctanos</button
+        >
+        <div class="flex gap-8 md:hidden justify-end">
+          <a href="#"
+            ><img
+              src="/laser/icons/facebook.svg"
+              alt="Link to Facebook"
+              width="20"
+            /></a
+          >
+          <a href="#"
+            ><img
+              src="/laser/icons/instagram.svg"
+              alt="Link to Instagram"
+              width="20"
+            /></a
+          >
+          <a href="#"
+            ><img
+              src="/laser/icons/whatsapp.svg"
+              alt="Link to Whatsapp"
+              width="20"
+            /></a
+          >
+        </div>
+      </div>
+      <!-- Image -->
+      <div class="absolute top-0 md:relative md:w-1/2 h-full w-full -z-10">
+        <div class="background-image"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -86,7 +93,7 @@
     height: calc(100vh);
     background:
       linear-gradient(90deg, #80cde000, #41e1d166),
-      url(/laser/images/modern-hospital_opt.jpg) no-repeat center center fixed;
+      url(/laser/images/modern-hospital-hero.jpg) no-repeat center center fixed;
     background-size: cover;
   }
   .animation {

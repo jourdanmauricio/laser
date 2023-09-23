@@ -1,7 +1,53 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Menu from '../components/Menu/Menu.astro';
+
+import ContactForm from '../components/Contact/ContactForm/ContactForm.astro';
+import ContactInfo from '../components/Contact/ContactInfo/ContactInfo.astro';
 ---
 
 <Layout pageTitle="Contacto">
-  <h1>CONTACTO</h1>
+  <main class="contact min-h-screen">
+    <Menu />
+    <h2
+      class="flex justify-center items-center text-4xl pt-4 font-medium text-primary"
+    >
+      Contáctanos
+    </h2>
+
+    <div>
+      <div class="flex flex-col md:flex-row gap-5 p-5">
+        <!-- Info -->
+        <ContactInfo />
+
+        <!-- Form -->
+        <ContactForm />
+      </div>
+    </div>
+  </main>
+
+  <style>
+    main {
+      background: linear-gradient(
+        90deg,
+        #0e3959 0%,
+        #0e3959 30%,
+        #03a9f5 30%,
+        #03a9f5 100%
+      );
+    }
+    @media (max-width: 991px) {
+      main {
+        background: #03a9f5;
+      }
+    }
+    .contact {
+      height: calc(100vh);
+      background:
+        linear-gradient(90deg, #80cde000, #41e1d166),
+        url(/laser/images/modern-hospital-contact.jpg) no-repeat center center
+          fixed;
+      background-size: cover;
+    }
+  </style>
 </Layout>

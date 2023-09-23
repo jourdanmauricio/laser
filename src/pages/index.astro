@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
 import Hero from '../components/Hero/Hero.astro';
 import MiniCard from '../components/MiniCard/MiniCard.astro';
 ---
@@ -8,7 +9,7 @@ import MiniCard from '../components/MiniCard/MiniCard.astro';
   <Hero />
   <main class="px-10 py-10 md:py-0">
     <section
-      class="flex flex-col md:flex-row justify-center items-center md:-translate-y-1/2 gap-16"
+      class="hidden md:flex md:flex-row justify-center items-center md:-translate-y-1/2 gap-16"
     >
       <MiniCard
         title="Consultorios"

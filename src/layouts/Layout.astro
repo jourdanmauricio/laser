@@ -2,7 +2,7 @@
 import '@fontsource/poppins';
 import '@fontsource/roboto';
 
-import Menu from '../components/Menu/Menu.astro';
+// import Menu from '../components/Menu/Menu.astro';
 
 interface Props {
   pageTitle: string;
@@ -27,7 +27,7 @@ const { pageTitle = 'Componentrs', description = '' } = Astro.props;
     <link
       rel="icon"
       type="image/svg+xml"
-      href="/favicon.svg"
+      href="/laser/favicon.svg"
     />
     <meta
       name="generator"
@@ -36,7 +36,7 @@ const { pageTitle = 'Componentrs', description = '' } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body class="max-w-[1440px]">
-    <Menu />
+    <!-- <Menu /> -->
     <slot />
   </body>
 </html>
@@ -46,6 +46,7 @@ const { pageTitle = 'Componentrs', description = '' } = Astro.props;
     --primary-font: poppins;
     --primary-color: #0c4a6e; /* Sky-900 */
     --secondary-color: #0d9488; /* Teal-600 */
+    --menu-heigth: 3.5rem; /* 56px */
   }
   * {
     box-sizing: border-box;
