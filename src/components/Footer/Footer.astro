@@ -1,17 +1,25 @@
 ---
-import SocialNetworks from './SocialNetworks.astro'
+import SocialNetworks from './SocialNetworks.astro';
+
+const BACKEND = import.meta.env.BACKEND;
+const URL = import.meta.env.URL;
 ---
-<footer class='w-full bg-slate-950 text-white'>
-  <div class='flex flex-col lg:flex-row lg:justify-around justify-center items-start p-10 gap-8'>
-    <div class='place-self-center text-center w-full lg:w-1/5'>
+
+<footer class="w-full bg-slate-950 text-white">
+  <div
+    class="flex flex-col lg:flex-row lg:justify-around justify-center items-start p-10 gap-8"
+  >
+    <div class="place-self-center text-center w-full lg:w-1/5">
       <a href="#">
         <h3 class="text-slate-200 text-3xl font-semibold">
           Laser<span class="text-primary">Med</span>
         </h3>
       </a>
     </div>
-    <div class='flex flex-col justify-center items-center gap-2 w-full lg:w-2/5'>
-      <h2 class='pb-4 text-center text-xl font-semibold'>SOBRE NOSOTROS</h2>
+    <div
+      class="flex flex-col justify-center items-center gap-2 w-full lg:w-2/5"
+    >
+      <h2 class="pb-4 text-center text-xl font-semibold">SOBRE NOSOTROS</h2>
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, eos.
       </p>
@@ -20,19 +28,129 @@ import SocialNetworks from './SocialNetworks.astro'
       </p>
     </div>
 
-    <div class='flex flex-col items-center gap-4 w-full lg:w-2/5'>
-      <div class=''>
-        <h2 class='pb-4 text-center text-xl font-semibold'>SIGUENOS</h2>
+    <div class="flex flex-col items-center gap-4 w-full lg:w-2/5">
+      <div class="">
+        <h2 class="pb-4 text-center text-xl font-semibold">SIGUENOS</h2>
         <SocialNetworks />
       </div>
-      <div class='flex gap-2'>
-        <input class='rounded border-none text-slate-900 p-2' type='text' placeholder='example@email.com'>
-        <button class='bg-primary p-2 rounded'>Suscribete</button>
+
+      <div
+        id="response-form"
+        class="flex-col justify-center items-center h-full hidden"
+      >
+        <p
+          id="form-result"
+          class="text-xl font-semibold"
+        >
+          Ya estas suscripto
+        </p>
+        <p
+          id="message"
+          class="mt-4"
+        >
+          En breve recibirás nuestro boletín.
+        </p>
+        <p>Muchas gracias.</p>
       </div>
+
+      <form
+        class="flex gap-2"
+        id="subscriber-form"
+        novalidate
+      >
+        <div class="flex flex-col w-2/3">
+          <input
+            id="email"
+            name="email"
+            class="p-2 border border-slate-900 outline-none w-full"
+            type="email"
+            data-pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+            data-error="Email inválido"
+            placeholder="example@email.com"
+            required
+          />
+          <span class="text-sm text-red-500 transition-opacity opacity-0"
+            >Error</span
+          >
+        </div>
+
+        <button
+          id="subscribe-btn"
+          type="submit"
+          class="bg-primary py-2 h-fit rounded w-1/3"
+          >Suscribete</button
+        >
+      </form>
     </div>
   </div>
- 
-  <div class='text-center p-1 bg-slate-900'>
+
+  <div class="text-center p-1 bg-slate-900">
     <small>&copy; 2023 <b>LaserMed</b> - Todos los derechos reservados.</small>
   </div>
 </footer>
+
+<script define:vars={{ BACKEND, URL }}>
+const sendBtn = document.getElementById( 'subscribe-btn' );
+
+const form = document.getElementById( 'subscriber-form' );
+form.addEventListener( 'submit', ( e ) => sendform( e ) );
+
+async function sendform( e ) {
+  e.preventDefault();
+  console.log( 'submit' );
+  const fieldsToValidate = document
+    .getElementById( e.target.id )
+    .querySelectorAll( '[required], [data-pattern]' );
+
+  console.log( 'fieldsToValidate', fieldsToValidate );
+
+  let error = false;
+  for ( let i = 0; i < fieldsToValidate.length; i++ ) {
+    const field = fieldsToValidate[i];
+    const spanError = field.nextSibling;
+    spanError.classList.add( 'opacity-0' );
+    if ( field.hasAttribute( 'required' ) && field.value.trim().length === 0 ) {
+      spanError.textContent = 'Requerido';
+      spanError.classList.remove( 'opacity-0' );
+      spanError.classList.add( 'opacity-1' );
+      error = true;
+    }
+    if ( field.value.trim().length > 0 && field.hasAttribute( 'data-pattern' ) ) {
+      let regex = new RegExp( field.dataset.pattern );
+      if ( regex.exec( field.value ) === null ) {
+        spanError.textContent = field.dataset.error;
+        spanError.classList.remove( 'opacity-0' );
+        spanError.classList.add( 'opacity-1' );
+        error = true;
+      }
+    }
+  }
+  if ( error ) return error;
+
+  const data = Object.fromEntries( new FormData( e.target ) );
+  data.url = URL;
+  const responseForm = document.getElementById( 'response-form' );
+  const formResult = document.getElementById( 'form-result' );
+  const message = document.getElementById( 'message' );
+
+  try {
+    sendBtn.innerHTML = '<div></div>';
+    sendBtn.classList.add( 'spinner-btn' );
+    const response = await fetch( `${BACKEND}/subscribers`, {
+      method: 'POST',
+      body: JSON.stringify( data ),
+      headers: { 'Content-Type': 'application/json' },
+    } );
+
+    if ( response.ok === false ) throw 'Error';
+  } catch ( err ) {
+    formResult.textContent = 'Error realizando la suscripción';
+    message.textContent = 'Intentelo nuevamente.';
+  } finally {
+    responseForm.classList.add( 'flex' );
+    responseForm.classList.remove( 'hidden' );
+    form.classList.add( 'hidden' );
+    form.classList.remove( 'flex' );
+  }
+}
+</script>
