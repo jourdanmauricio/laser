@@ -66,7 +66,7 @@ const offices = [
 ---
 
 <div class="flex flex-col gap-4 shadow-lg w-full md:w-1/2">
-  <div class="flex flex-col gap-4 bg-cyan-800 p-5 text-white">
+  <div class="flex flex-col gap-4 bg-cyan-800 p-5 text-white h-full">
     <h3 class="text-center font-semibold">
       Información de contacto - consultorios
     </h3>
@@ -108,7 +108,7 @@ const offices = [
     }
 
     <!-- Social Media Links -->
-    <!-- <ul class="flex gap-4">
+    <ul class="flex gap-4">
       <li>
         <a href="#"
           ><svg
@@ -173,7 +173,7 @@ const offices = [
           </svg></a
         >
       </li>
-    </ul> -->
+    </ul>
   </div>
 
   <Modal />
@@ -209,11 +209,9 @@ const offices = [
   };
 
   const mapa = document.getElementById('mapas');
-  console.log('mapa', mapa);
 
   //@ts-ignore
   window.initMap = function () {
-    console.log('initMap', mapa);
     const coord = { lat, lng };
 
     //@ts-ignore

@@ -1,7 +1,32 @@
-<div class="bg-slate-100 shadow-lg p-4 w-full md:w-1/2">
+---
+const BACKEND = import.meta.env.BACKEND;
+const URL = import.meta.env.URL;
+---
+
+<div class="bg-slate-100 shadow-lg px-4 pb-4 w-full md:w-1/2">
+  <div
+    id="response-form"
+    class="flex-col justify-center items-center h-full hidden"
+  >
+    <p
+      id="form-result"
+      class="text-xl font-semibold"
+    >
+      Mensaje enviado!
+    </p>
+    <p
+      id="message"
+      class="mt-4"
+    >
+      En breve nos pondremos en contacto.
+    </p>
+    <p>Muchas gracias.</p>
+  </div>
+
   <form
-    action=""
-    class="flex flex-col gap-8 mt-4"
+    id="contact-form"
+    class="flex flex-col gap-2 mt-4"
+    novalidate
   >
     <div class="flex flex-col w-full">
       <label
@@ -14,48 +39,173 @@
         name="name"
         class="p-2 border border-slate-900 outline-none"
         type="text"
-        placeholder="Jhon"
+        placeholder="Nombre y apellido"
+        data-pattern="^[a-zA-Z0-9 ÑñÁÉÍÓÚáéíóú]{3,100}$"
+        data-error="Nombre inválido"
+        required
       />
+      <span class="text-sm text-red-500 transition-opacity opacity-0"
+        >Error</span
+      >
     </div>
 
     <div class="flex flex-col w-full">
       <label
         class="text-sm text-blue-500"
-        for="name"
+        for="email"
         >Email
       </label>
       <input
         id="email"
         name="email"
         class="p-2 border border-slate-900 outline-none"
-        type="text"
-        placeholder="jhon@email.com"
+        type="email"
+        data-pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+        data-error="Email inválido"
+        placeholder="example@email.com"
       />
+      <span class="text-sm text-red-500 transition-opacity opacity-0"
+        >Error</span
+      >
     </div>
 
     <div class="flex flex-col w-full">
       <label
         class="text-sm text-blue-500"
-        for="name"
+        for="phone"
+        >Teléfono
+      </label>
+      <input
+        id="phone"
+        name="phone"
+        class="p-2 border border-slate-900 outline-none"
+        type="text"
+        data-pattern="^[0-9 ()]{7,15}$"
+        data-error="Ingrese números o espacios"
+        placeholder="(0999) 9999 9999"
+        required
+      />
+      <span class="text-sm text-red-500 transition-opacity opacity-0"
+        >Error</span
+      >
+    </div>
+
+    <div class="flex flex-col w-full">
+      <label
+        class="text-sm text-blue-500"
+        for="comment"
         >Mensaje
       </label>
       <textarea
-        id="message"
-        name="message"
-        rows="5"
+        id="comment"
+        name="comment"
+        rows="4"
         class="p-2 border border-slate-900 outline-none"
-        placeholder="Jhon"
+        data-pattern="^[a-zA-Z0-9 ÑñÁÉÍÓÚáéíóú]{3,255}$"
+        data-error="Ingrese letras o números"
+        placeholder="Mensaje"
+        required
       ></textarea>
+      <span class="text-sm text-red-500 transition-opacity opacity-0"
+        >Error</span
+      >
     </div>
 
-    <div
-      class="bg-purple-500 border-none py-2 px-4 rounded cursor-pointer block ml-auto"
+    <button
+      class="bg-primary border-none py-2 px-4 rounded w-32 h-10 cursor-pointer ml-auto text-white text-lg flex items-center justify-center"
+      type="submit"
     >
-      <input
-        class="text-white text-lg cursor-pointer"
-        type="submit"
-        value="Send"
-      />
-    </div>
+      <span id="send-btn">Enviar</span>
+
+      <!-- <div class="spinner-btn">aaa</div> -->
+    </button>
   </form>
+
+  <style>
+    .spinner-btn {
+      pointer-events: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spinner 1s ease-out infinite;
+    }
+
+    @keyframes spinner {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+  <script define:vars={{ BACKEND, URL }}>
+    const sendBtn = document.getElementById('send-btn');
+
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', (e) => sendform(e));
+
+    async function sendform(e) {
+      e.preventDefault();
+      const fieldsToValidate = document
+        .getElementById(e.target.id)
+        .querySelectorAll('[required], [data-pattern]');
+
+      let error = false;
+      for (let i = 0; i < fieldsToValidate.length; i++) {
+        const field = fieldsToValidate[i];
+        const spanError = field.nextSibling;
+        spanError.classList.add('opacity-0');
+        if (field.hasAttribute('required') && field.value.trim().length === 0) {
+          spanError.textContent = 'Requerido';
+          spanError.classList.remove('opacity-0');
+          spanError.classList.add('opacity-1');
+          error = true;
+        }
+        if (
+          field.value.trim().length > 0 &&
+          field.hasAttribute('data-pattern')
+        ) {
+          let regex = new RegExp(field.dataset.pattern);
+          if (regex.exec(field.value) === null) {
+            spanError.textContent = field.dataset.error;
+            spanError.classList.remove('opacity-0');
+            spanError.classList.add('opacity-1');
+            error = true;
+          }
+        }
+      }
+      if (error) return error;
+
+      const data = Object.fromEntries(new FormData(e.target));
+      data.url = URL;
+      const sendBtn = document.getElementById('send-btn');
+      const responseForm = document.getElementById('response-form');
+      const formResult = document.getElementById('form-result');
+      const message = document.getElementById('message');
+
+      try {
+        sendBtn.innerHTML = '<div></div>';
+        sendBtn.classList.add('spinner-btn');
+        const response = await fetch(`${BACKEND}/contacts`, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok === false) throw 'Error';
+      } catch (err) {
+        formResult.textContent = 'Error enviando el mensaje';
+        message.textContent = 'Intentelo nuevamente.';
+      } finally {
+        responseForm.classList.add('flex');
+        responseForm.classList.remove('hidden');
+        form.classList.add('hidden');
+        form.classList.remove('flex');
+      }
+    }
+  </script>
 </div>

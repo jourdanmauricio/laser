@@ -7,27 +7,29 @@ import ContactInfo from '../components/Contact/ContactInfo/ContactInfo.astro';
 ---
 
 <Layout pageTitle="Contacto">
-  <main class="contact min-h-screen">
-    <Menu />
-    <h2
-      class="flex justify-center items-center text-4xl pt-4 font-medium text-primary"
-    >
-      Contáctanos
-    </h2>
+  <main class="">
+    <section class="contact">
+      <Menu />
+      <h2
+        class="flex justify-center items-center text-4xl pt-4 font-medium text-primary"
+      >
+        Contáctanos
+      </h2>
 
-    <div>
-      <div class="flex flex-col md:flex-row gap-5 p-5">
-        <!-- Info -->
-        <ContactInfo />
+      <div class="main">
+        <div class="flex flex-col md:flex-row gap-8 p-8">
+          <!-- Info -->
+          <ContactInfo />
 
-        <!-- Form -->
-        <ContactForm />
+          <!-- Form -->
+          <ContactForm />
+        </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <style>
-    main {
+    /* main {
       background: linear-gradient(
         90deg,
         #0e3959 0%,
@@ -40,13 +42,18 @@ import ContactInfo from '../components/Contact/ContactInfo/ContactInfo.astro';
       main {
         background: #03a9f5;
       }
-    }
+    } */
+    /* .main {
+      background: linear-gradient(90deg, #80cde000, #41e1d166);
+    } */
     .contact {
-      height: calc(100vh);
+      /* height: calc(100vh); */
       background:
         linear-gradient(90deg, #80cde000, #41e1d166),
         url(/laser/images/modern-hospital-contact.jpg) no-repeat center center
           fixed;
+      /* background: linear-gradient(90deg, #80cde000, #41e1d166); */
+
       background-size: cover;
     }
   </style>
