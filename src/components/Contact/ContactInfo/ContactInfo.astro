@@ -1,6 +1,6 @@
 ---
 import Modal from '../../../components/Modal/Modal.astro';
-
+const PASS_MAP = import.meta.env.PASS_MAP;
 const offices = [
   {
     id: 1,
@@ -179,56 +179,56 @@ const offices = [
   <Modal />
 </div>
 
-<script>
-  let lat = -34.9205012;
-  let lng = -57.9943701;
-  const buttons = document.querySelectorAll('.view-map');
-  const modal = document.getElementById('btn-modal');
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => viewMap(button));
-  });
+<script define:vars={{ PASS_MAP }}>
+let lat = -34.9205012;
+let lng = -57.9943701;
+const buttons = document.querySelectorAll( '.view-map' );
+const modal = document.getElementById( 'btn-modal' );
+buttons.forEach( ( button ) => {
+  button.addEventListener( 'click', () => viewMap( button ) );
+} );
 
-  const viewMap = (button) => {
-    lat = parseFloat(button.dataset.lat);
-    lng = parseFloat(button.dataset.lng);
-    const title = document.getElementById('title');
-    title.textContent = button.dataset.city;
-    const street = document.getElementById('street');
-    street.textContent = `${button.dataset.street}, ${button.dataset.province} - CP ${button.dataset.cp}`;
+const viewMap = ( button ) => {
+  lat = parseFloat( button.dataset.lat );
+  lng = parseFloat( button.dataset.lng );
+  const title = document.getElementById( 'title' );
+  title.textContent = button.dataset.city;
+  const street = document.getElementById( 'street' );
+  street.textContent = `${button.dataset.street}, ${button.dataset.province} - CP ${button.dataset.cp}`;
 
-    const phone = document.getElementById('phone');
-    phone.textContent = button.dataset.phone;
+  const phone = document.getElementById( 'phone' );
+  phone.textContent = button.dataset.phone;
 
-    const email = document.getElementById('email');
-    email.textContent = button.dataset.email;
-
-    //@ts-ignore
-    modal.checked = true;
-    //@ts-ignore
-    initMap();
-  };
-
-  const mapa = document.getElementById('mapas');
+  const email = document.getElementById( 'email' );
+  email.textContent = button.dataset.email;
 
   //@ts-ignore
-  window.initMap = function () {
-    const coord = { lat, lng };
+  modal.checked = true;
+  //@ts-ignore
+  initMap();
+};
 
-    //@ts-ignore
-    let map = new google.maps.Map(mapa, {
-      center: coord,
-      zoom: 14,
-    });
-    //@ts-ignore
-    let marker = new google.maps.Marker({
-      position: coord,
-      map: map,
-    });
-  };
+const mapa = document.getElementById( 'mapas' );
+
+//@ts-ignore
+window.initMap = function () {
+  const coord = { lat, lng };
+
+  //@ts-ignore
+  let map = new google.maps.Map( mapa, {
+    center: coord,
+    zoom: 14,
+  } );
+  //@ts-ignore
+  let marker = new google.maps.Marker( {
+    position: coord,
+    map: map,
+  } );
+};
 </script>
 
 <script
   async
   defer
-  src=`https://maps.googleapis.com/maps/api/js?key=${import.meta.env.PASS_MAP}&callback=initMap`
+  src=`https://maps.googleapis.com/maps/api/js?key=${PASS_MAP}&callback=initMap`
 ></script>
