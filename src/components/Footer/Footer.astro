@@ -1,0 +1,38 @@
+---
+import SocialNetworks from './SocialNetworks.astro'
+---
+<footer class='w-full bg-slate-950 text-white'>
+  <div class='flex flex-col lg:flex-row lg:justify-around justify-center items-start p-10 gap-8'>
+    <div class='place-self-center text-center w-full lg:w-1/5'>
+      <a href="#">
+        <h3 class="text-slate-200 text-3xl font-semibold">
+          Laser<span class="text-primary">Med</span>
+        </h3>
+      </a>
+    </div>
+    <div class='flex flex-col justify-center items-center gap-2 w-full lg:w-2/5'>
+      <h2 class='pb-4 text-center text-xl font-semibold'>SOBRE NOSOTROS</h2>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, eos.
+      </p>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, eos.
+      </p>
+    </div>
+
+    <div class='flex flex-col items-center gap-4 w-full lg:w-2/5'>
+      <div class=''>
+        <h2 class='pb-4 text-center text-xl font-semibold'>SIGUENOS</h2>
+        <SocialNetworks />
+      </div>
+      <div class='flex gap-2'>
+        <input class='rounded border-none text-slate-900 p-2' type='text' placeholder='example@email.com'>
+        <button class='bg-primary p-2 rounded'>Suscribete</button>
+      </div>
+    </div>
+  </div>
+ 
+  <div class='text-center p-1 bg-slate-900'>
+    <small>&copy; 2023 <b>LaserMed</b> - Todos los derechos reservados.</small>
+  </div>
+</footer>
