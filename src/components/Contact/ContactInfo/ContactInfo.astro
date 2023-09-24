@@ -1,6 +1,5 @@
 ---
 import Modal from '../../../components/Modal/Modal.astro';
-const PASS_MAPS = import.meta.env.PASS_MAPS;
 const offices = [
   {
     id: 1,
@@ -228,10 +227,9 @@ const offices = [
 </script>
 
 <script
-  define:vars={{ PASS_MAPS }}
   async
   defer
-  src=`https://maps.googleapis.com/maps/api/js?key=${PASS_MAPS}&callback=initMap`
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeRYDNFRPnw7Hh7qs4Cog5H6CXmgwh5go&callback=initMap"
 >
 console.log( 'PASS_MAPS', PASS_MAPS );
 </script>
