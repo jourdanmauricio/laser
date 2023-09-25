@@ -35,17 +35,17 @@ const URL = import.meta.env.URL;
       </div>
 
       <div
-        id="response-form"
+        id="response-subscriber-form"
         class="flex-col justify-center items-center h-full hidden"
       >
         <p
-          id="form-result"
+          id="form-subscriber-result"
           class="text-xl font-semibold"
         >
           Ya estas suscripto
         </p>
         <p
-          id="message"
+          id="message-subscriber"
           class="mt-4"
         >
           En breve recibirás nuestro boletín.
@@ -92,8 +92,8 @@ const URL = import.meta.env.URL;
 <script define:vars={{ BACKEND, URL }}>
 const sendBtn = document.getElementById( 'subscribe-btn' );
 
-const form = document.getElementById( 'subscriber-form' );
-form.addEventListener( 'submit', ( e ) => sendform( e ) );
+const subscriberForm = document.getElementById( 'subscriber-form' );
+subscriberForm.addEventListener( 'submit', ( e ) => sendform( e ) );
 
 async function sendform( e ) {
   e.preventDefault();
@@ -129,9 +129,13 @@ async function sendform( e ) {
 
   const data = Object.fromEntries( new FormData( e.target ) );
   data.url = URL;
-  const responseForm = document.getElementById( 'response-form' );
-  const formResult = document.getElementById( 'form-result' );
-  const message = document.getElementById( 'message' );
+  const responseSubscriberForm = document.getElementById(
+    'response-subscriber-form'
+  );
+  const formSubsciberResult = document.getElementById(
+    'form-subscriber-result'
+  );
+  const messageSubscriber = document.getElementById( 'message-subscriber' );
 
   try {
     sendBtn.innerHTML = '<div></div>';
@@ -144,13 +148,13 @@ async function sendform( e ) {
 
     if ( response.ok === false ) throw 'Error';
   } catch ( err ) {
-    formResult.textContent = 'Error realizando la suscripción';
-    message.textContent = 'Intentelo nuevamente.';
+    formSubsciberResult.textContent = 'Error realizando la suscripción';
+    messageSubscriber.textContent = 'Intentelo nuevamente.';
   } finally {
-    responseForm.classList.add( 'flex' );
-    responseForm.classList.remove( 'hidden' );
+    responseSubscriberForm.classList.add( 'flex' );
+    responseSubscriberForm.classList.remove( 'hidden' );
     form.classList.add( 'hidden' );
     form.classList.remove( 'flex' );
   }
-}
+  }
 </script>

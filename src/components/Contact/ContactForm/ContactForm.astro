@@ -5,17 +5,17 @@ const URL = import.meta.env.URL;
 
 <div class="bg-slate-100 shadow-lg px-4 pb-4 w-full md:w-1/2">
   <div
-    id="response-form"
+    id="response-contact-form"
     class="flex-col justify-center items-center h-full hidden"
   >
     <p
-      id="form-result"
+      id="form-contact-result"
       class="text-xl font-semibold"
     >
       Mensaje enviado!
     </p>
     <p
-      id="message"
+      id="contact-message"
       class="mt-4"
     >
       En breve nos pondremos en contacto.
@@ -143,8 +143,8 @@ const URL = import.meta.env.URL;
   <script define:vars={{ BACKEND, URL }}>
     const sendBtn = document.getElementById('send-btn');
 
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', (e) => sendform(e));
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => sendform(e));
 
     async function sendform(e) {
       e.preventDefault();
@@ -180,9 +180,11 @@ const URL = import.meta.env.URL;
 
       const data = Object.fromEntries(new FormData(e.target));
       data.url = URL;
-      const responseForm = document.getElementById('response-form');
-      const formResult = document.getElementById('form-result');
-      const message = document.getElementById('message');
+      const responseContactForm = document.getElementById(
+        'response-contact-form'
+      );
+      const formContactResult = document.getElementById('form-contact-result');
+      const contactMessage = document.getElementById('contact-message');
 
       try {
         sendBtn.innerHTML = '<div></div>';
@@ -195,11 +197,11 @@ const URL = import.meta.env.URL;
 
         if (response.ok === false) throw 'Error';
       } catch (err) {
-        formResult.textContent = 'Error enviando el mensaje';
-        message.textContent = 'Intentelo nuevamente.';
+        formContactResult.textContent = 'Error enviando el mensaje';
+        contactMessage.textContent = 'Intentelo nuevamente.';
       } finally {
-        responseForm.classList.add('flex');
-        responseForm.classList.remove('hidden');
+        responseContactForm.classList.add('flex');
+        responseContactForm.classList.remove('hidden');
         form.classList.add('hidden');
         form.classList.remove('flex');
       }
