@@ -4,6 +4,7 @@ import '@fontsource/roboto';
 
 // import Menu from '../components/Menu/Menu.astro';
 import Footer from '../components/Footer/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   pageTitle: string;
@@ -35,41 +36,42 @@ const { pageTitle = 'Componentrs', description = '' } = Astro.props;
       content={Astro.generator}
     />
     <title>{pageTitle}</title>
+    <ViewTransitions />
   </head>
   <body class="max-w-[1440px]">
     <!-- <Menu /> -->
     <slot />
     <Footer />
+    <style is:global>
+      :root {
+        --title-font: roboto;
+        --primary-font: poppins;
+        --primary-color: #0c4a6e; /* Sky-900 */
+        --secondary-color: #0d9488; /* Teal-600 */
+        --menu-heigth: 3.5rem; /* 56px */
+      }
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        max-width: 1440px;
+        margin: 0 auto;
+        /* scroll-behavior: smooth; */
+        font-family: var(--primary-font);
+        background-color: #e2e8f0;
+        font-size: 1rem;
+      }
+
+      h1 {
+        @apply font-title;
+      }
+      .btn {
+        @apply bg-primary w-fit rounded text-slate-50;
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  :root {
-    --title-font: roboto;
-    --primary-font: poppins;
-    --primary-color: #0c4a6e; /* Sky-900 */
-    --secondary-color: #0d9488; /* Teal-600 */
-    --menu-heigth: 3.5rem; /* 56px */
-  }
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
-
-  html,
-  body {
-    max-width: 1440px;
-    margin: 0 auto;
-    /* scroll-behavior: smooth; */
-    font-family: var(--primary-font);
-    background-color: #e2e8f0;
-    font-size: 1rem;
-  }
-
-  h1 {
-    @apply font-title;
-  }
-  .btn {
-    @apply bg-primary w-fit rounded text-slate-50;
-  }
-</style>
