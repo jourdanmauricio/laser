@@ -90,7 +90,7 @@ const URL = import.meta.env.URL;
 </footer>
 
 <script define:vars={{ BACKEND, URL }}>
-const sendBtn = document.getElementById( 'subscribe-btn' );
+const subscribeBtn = document.getElementById( 'subscribe-btn' );
 
 const subscriberForm = document.getElementById( 'subscriber-form' );
 subscriberForm.addEventListener( 'submit', ( e ) => sendform( e ) );
@@ -138,8 +138,8 @@ async function sendform( e ) {
   const messageSubscriber = document.getElementById( 'message-subscriber' );
 
   try {
-    sendBtn.innerHTML = '<div></div>';
-    sendBtn.classList.add( 'spinner-btn' );
+    subscribeBtn.innerHTML = '<div></div>';
+    subscribeBtn.classList.add( 'spinner-btn' );
     const response = await fetch( `${BACKEND}/subscribers`, {
       method: 'POST',
       body: JSON.stringify( data ),
