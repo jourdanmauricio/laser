@@ -89,6 +89,27 @@ const URL = import.meta.env.URL;
   </div>
 </footer>
 
+<style>
+  .spinner-btn {
+    pointer-events: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spinner 1s ease-out infinite;
+  }
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
 <script define:vars={{ BACKEND, URL }}>
 const subscribeBtn = document.getElementById( 'subscribe-btn' );
 
