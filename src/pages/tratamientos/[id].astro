@@ -15,32 +15,34 @@ export const getStaticPaths = () => {
 ---
 
 <Layout pageTitle="Welcome to Astro.">
-  <main class="min-h-screen p-10">
+  <main class="min-h-screen">
     <Menu />
-    <h1
-      transition:name={tratamiento.title}
-      class="text-center p-10 text-4xl"
-    >
-      {tratamiento.title}
-    </h1>
-    <div class="flex gap-10">
-      <div class="h-[400px] w-[400px]">
-        <img
-          transition:name={tratamiento.image}
-          class="object-cover w-full h-full"
-          src={tratamiento.image}
-          alt=""
-        />
+    <section class="p-10">
+      <h1
+        transition:name={tratamiento.title}
+        class="text-center text-4xl"
+      >
+        {tratamiento.title}
+      </h1>
+      <div class="flex gap-10 p-10">
+        <div class="h-[400px] w-[400px]">
+          <img
+            transition:name={tratamiento.image}
+            class="object-cover w-full h-full"
+            src={tratamiento.image}
+            alt=""
+          />
+        </div>
+        <div>
+          <p>{tratamiento.body}</p>
+          <p>{tratamiento.body}</p>
+          <p>{tratamiento.body}</p>
+          <p>{tratamiento.body}</p>
+          <p>{tratamiento.body}</p>
+          <p>{tratamiento.body}</p>
+        </div>
       </div>
-      <div>
-        <p>{tratamiento.body}</p>
-        <p>{tratamiento.body}</p>
-        <p>{tratamiento.body}</p>
-        <p>{tratamiento.body}</p>
-        <p>{tratamiento.body}</p>
-        <p>{tratamiento.body}</p>
-      </div>
-    </div>
+    </section>
   </main>
 </Layout>
 <style>
