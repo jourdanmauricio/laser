@@ -1,67 +1,10 @@
 ---
 import Modal from '../../../components/Modal/Modal.astro';
-const offices = [
-  {
-    id: 1,
-    city: 'La Plata',
-    street: 'Diagonal 74 nro 1954',
-    province: 'Buenos Aires',
-    cp: '1900',
-    phone: '0221 452 9299',
-    email: 'laurarodgineco@gmail.com',
-    lat: -34.9205012,
-    lng: -57.9943701,
-    order: 1,
-  },
-  {
-    id: 2,
-    city: 'Pinamar',
-    street: 'Diagonal 74 nro 1954',
-    province: 'Buenos Aires',
-    cp: '1900',
-    phone: '0221 452 9299',
-    email: 'laurarodgineco@gmail.com',
-    lat: -37.1189193,
-    lng: -56.8734486,
-    order: 2,
-  },
-  {
-    id: 3,
-    city: 'Lobería',
-    street: 'Diagonal 74 nro 1954',
-    province: 'Buenos Aires',
-    cp: '1900',
-    phone: '0221 452 9299',
-    email: 'laurarodgineco@gmail.com',
-    lat: -38.1644505,
-    lng: -58.8567198,
-    order: 3,
-  },
-  {
-    id: 4,
-    city: 'Mar del Plata',
-    street: 'Diagonal 74 nro 1954',
-    province: 'Buenos Aires',
-    cp: '1900',
-    phone: '0221 452 9299',
-    email: 'laurarodgineco@gmail.com',
-    lat: -38.0174516,
-    lng: -57.7653461,
-    order: 4,
-  },
-  {
-    id: 5,
-    city: 'Necochea',
-    street: 'Diagonal 74 nro 1954',
-    province: 'Buenos Aires',
-    cp: '1900',
-    phone: '0221 452 9299',
-    email: 'laurarodgineco@gmail.com',
-    lat: -38.5737328,
-    lng: -58.7287288,
-    order: 5,
-  },
-];
+import { getOffices } from '../../../services/offices';
+
+const offices = await getOffices();
+
+console.log('offices', offices);
 ---
 
 <div class="flex flex-col gap-4 shadow-lg w-full md:w-1/2">
@@ -75,7 +18,7 @@ const offices = [
         <button
           class="view-map py-2 px-4 bg-primary text-slate-100 rounded cursor-pointer hover:bg-cyan-950"
           data-city={office.city}
-          data-street={office.street}
+          data-address={office.address}
           data-province={office.province}
           data-cp={office.cp}
           data-phone={office.phone}
@@ -100,7 +43,7 @@ const offices = [
           </span>
           <hr />
           <span class="text-sm">
-            {office.street} - {office.phone}
+            {office.address} - {office.phone}
           </span>
         </button>
       ))
@@ -192,8 +135,8 @@ const offices = [
     lng = parseFloat(button.dataset.lng);
     const title = document.getElementById('title');
     title.textContent = button.dataset.city;
-    const street = document.getElementById('street');
-    street.textContent = `${button.dataset.street}, ${button.dataset.province} - CP ${button.dataset.cp}`;
+    const address = document.getElementById('address');
+    address.textContent = `${button.dataset.address}, ${button.dataset.province} - CP ${button.dataset.cp}`;
 
     const phone = document.getElementById('phone');
     phone.textContent = button.dataset.phone;
