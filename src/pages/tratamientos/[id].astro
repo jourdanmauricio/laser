@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Menu from '../../components/Menu/Menu.astro';
+import { getTratamiento } from '../../services/tratamientos';
+
+const { id } = Astro.params;
+let tratamiento;
+if (id) {
+  tratamiento = await getTratamiento(id);
+}
+
+export const getStaticPaths = () => {
+  return [{ params: { id: '1' } }, { params: { id: '2' } }];
+};
+---
+
+<Layout pageTitle="Welcome to Astro.">
+  <main class="min-h-screen p-10">
+    <Menu />
+    <h1
+      transition:name={tratamiento.title}
+      class="text-center p-10 text-4xl"
+    >
+      {tratamiento.title}
+    </h1>
+    <div class="flex gap-10">
+      <div class="h-[400px] w-[400px]">
+        <img
+          transition:name={tratamiento.image}
+          class="object-cover w-full h-full"
+          src={tratamiento.image}
+          alt=""
+        />
+      </div>
+      <div>
+        <p>{tratamiento.body}</p>
+        <p>{tratamiento.body}</p>
+        <p>{tratamiento.body}</p>
+        <p>{tratamiento.body}</p>
+        <p>{tratamiento.body}</p>
+        <p>{tratamiento.body}</p>
+      </div>
+    </div>
+  </main>
+</Layout>
+<style>
+  main {
+    background: linear-gradient(90deg, #80cde000, #41e1d166);
+  }
+</style>

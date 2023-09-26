@@ -1,0 +1,37 @@
+---
+interface Props {
+  id: number;
+  title: string;
+  body: string;
+  href: string;
+  image: string;
+}
+
+const { id, href, title, body, image } = Astro.props;
+---
+
+<a
+  href={href}
+  class="relative h-[300px] w-full flex flex-col items-center bg-white border border-gray-200 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+>
+  <img
+    transition:name={image}
+    class="absolute object-cover w-full h-full"
+    src={image}
+    alt=""
+  />
+  <h2
+    transition:name={title}
+    class="p-2 z-10 text-xl font-bold tracking-tight text-gray-900 dark:text-white"
+  >
+    {title}
+  </h2>
+
+  <div
+    class="absolute p-4 backdrop-blur-sm bg-black/30 bottom-0 z-10 border-t-1 border-t-zinc-100"
+  >
+    <p class="font-light text-gray-700 dark:text-white">
+      {body}
+    </p>
+  </div>
+</a>

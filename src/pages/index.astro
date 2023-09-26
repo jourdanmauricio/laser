@@ -3,6 +3,11 @@ import Layout from '../layouts/Layout.astro';
 
 import Hero from '../components/Hero/Hero.astro';
 import MiniCard from '../components/MiniCard/MiniCard.astro';
+import Card from '../components/Card/Card.astro';
+
+import { getTratamientos } from '../services/tratamientos';
+
+const tratamientos = await getTratamientos();
 ---
 
 <Layout pageTitle="Welcome to Astro.">
@@ -65,18 +70,26 @@ import MiniCard from '../components/MiniCard/MiniCard.astro';
     </section>
   </main>
 
-   Hola
-
   <p class="font-sans ...">The quick brown fox ...</p>
   <p class="font-serif ...">The quick brown fox ...</p>
   <p class="font-mono ...">The quick brown fox ...</p>
 
-  <h1>Hola</h1>
-  <h1 class="font-primary">Hola</h1>
-</Layout>
-
-<style>
-  /* svg {
+  <div class="flex flex-col justify-center md:flex-row p-[5%]">
+    {
+      tratamientos.map((tratamiento) => (
+        <Card
+          id={tratamiento.id}
+          title={tratamiento.title}
+          body={tratamiento.body}
+          href={tratamiento.href}
+          image={tratamiento.image}
+        />
+      ))
+    }
+  </div>
+  <style>
+    /* svg {
       fill: var(--primary-color);
     } */
-</style>
+  </style>
+</Layout>
