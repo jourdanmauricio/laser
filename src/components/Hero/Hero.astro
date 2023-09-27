@@ -1,5 +1,8 @@
 ---
 import Menu from '../../components/Menu/Menu.astro';
+import { getNetworks } from '../../services/networks';
+
+const networks = await getNetworks();
 ---
 
 <div class="hero overflow-hidden">
@@ -20,27 +23,48 @@ import Menu from '../../components/Menu/Menu.astro';
       </div>
 
       <div class="hidden gap-8 md:flex">
-        <a href="#"
-          ><img
-            src="/laser/icons/facebook.svg"
-            alt="Link to Facebook"
-            width="20"
-          /></a
-        >
-        <a href="#"
-          ><img
-            src="/laser/icons/instagram.svg"
-            alt="Link to Instagram"
-            width="20"
-          /></a
-        >
-        <a href="#"
-          ><img
-            src="/laser/icons/whatsapp.svg"
-            alt="Link to Whatsapp"
-            width="20"
-          /></a
-        >
+        {
+          networks.facebook && (
+            <a
+              href={networks.facebook}
+              target="_blank"
+            >
+              <img
+                src="/laser/icons/facebook.svg"
+                alt="Link to Facebook"
+                width="20"
+              />
+            </a>
+          )
+        }
+        {
+          networks.instagram && (
+            <a
+              href={networks.instagram}
+              target="_blank"
+            >
+              <img
+                src="/laser/icons/instagram.svg"
+                alt="Link to Instagram"
+                width="20"
+              />
+            </a>
+          )
+        }
+        {
+          networks.whatsapp && (
+            <a
+              href={networks.whatsapp}
+              target="_blank"
+            >
+              <img
+                src="/laser/icons/whatsapp.svg"
+                alt="Link to Whatsapp"
+                width="20"
+              />
+            </a>
+          )
+        }
       </div>
     </div>
 
@@ -57,27 +81,48 @@ import Menu from '../../components/Menu/Menu.astro';
           Contáctanos</button
         >
         <div class="flex gap-8 md:hidden justify-end">
-          <a href="#"
-            ><img
-              src="/laser/icons/facebook.svg"
-              alt="Link to Facebook"
-              width="20"
-            /></a
-          >
-          <a href="#"
-            ><img
-              src="/laser/icons/instagram.svg"
-              alt="Link to Instagram"
-              width="20"
-            /></a
-          >
-          <a href="#"
-            ><img
-              src="/laser/icons/whatsapp.svg"
-              alt="Link to Whatsapp"
-              width="20"
-            /></a
-          >
+          {
+            networks.facebook && (
+              <a
+                href={networks.facebook}
+                target="_blank"
+              >
+                <img
+                  src="/laser/icons/facebook.svg"
+                  alt="Link to Facebook"
+                  width="20"
+                />
+              </a>
+            )
+          }
+          {
+            networks.instagram && (
+              <a
+                href={networks.instagram}
+                target="_blank"
+              >
+                <img
+                  src="/laser/icons/instagram.svg"
+                  alt="Link to Instagram"
+                  width="20"
+                />
+              </a>
+            )
+          }
+          {
+            networks.whatsapp && (
+              <a
+                href={networks.whatsapp}
+                target="_blank"
+              >
+                <img
+                  src="/laser/icons/whatsapp.svg"
+                  alt="Link to Whatsapp"
+                  width="20"
+                />
+              </a>
+            )
+          }
         </div>
       </div>
       <!-- Image -->
