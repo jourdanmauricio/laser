@@ -6,9 +6,9 @@ import SocialNetworks from '../Footer/SocialNetworks.astro';
 const networks = await getNetworks();
 ---
 
-<div class="hero relative overflow-hidden">
+<div class="hero relative overflow-hidden h-screen max-h-[900px]">
   <!-- <Menu /> -->
-  <div class="shape h-[60vh] 2xl:h-[45vh]">
+  <div class="shape h-[60vh] 2xl:h-[50vh]">
     <img
       class="w-full h-full"
       src="/laser/images/hero-shape.png"
@@ -16,38 +16,38 @@ const networks = await getNetworks();
     />
   </div>
   <div
-    class="relative flex flex-col md:px-20 h-full max-h-full max-w-[1440px] mx-auto"
+    class="flex flex-col pt-10 md:px-20 h-full max-h-full max-w-[1440px] mx-auto"
   >
-    <div class="z-0 h-full">
-      <div class="flex flex-col z-10 text-primary h-full px-4 pt-5 lg:pt-10">
-        <div
-          class="text-3xl md:text-4xl flex gap-2.5 justify-center md:justify-start mt-20"
-        >
-          <h2 class="text-primary m-0">Lorem Ipsum</h2>
-          <div class="overflow-hidden font-semibold h-[2.25rem] md:h-10">
-            <ul class="text-red-500 animation mt-0">
-              <li>Lorem 1</li>
-              <li>Lorem 2</li>
-              <li>Lorem 3</li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="text-xl text-slate-950 pt-10 lg:pt-20">
-          Neque porro quisquam est qui dolorem ipsum quia, <br /> dolor sit
-          amet, consectetur, adipisci velit..."
-        </p>
-
-        <button class="btn mt-10 py-2 px-8 rounded block">Contáctanos</button>
-
-        <div class="absolute bottom-10">
-          <SocialNetworks />
+    <div class="flex justify-center md:justify-between">
+      <div
+        class="text-3xl md:text-4xl flex gap-2.5 justify-center md:justify-start"
+      >
+        <h2 class="text-primary m-0">Lorem Ipsum</h2>
+        <div class="overflow-hidden font-semibold h-[2.25rem] md:h-10">
+          <ul class="text-red-500 animation mt-0">
+            <li>Lorem 1</li>
+            <li>Lorem 2</li>
+            <li>Lorem 3</li>
+          </ul>
         </div>
       </div>
+    </div>
+
+    <div class="relative flex md:flex-row items-end md:items-center z-0 h-full">
+      <div class="md:w-1/2 flex flex-col gap-8 md:gap-16 z-10 p-4 text-primary">
+        <p class="text-xl text-slate-950">
+          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+          consectetur, adipisci velit..."
+        </p>
+
+        <button class="btn py-2 px-8 rounded block mx-auto md:ml-0">
+          Contáctanos</button
+        >
+
+        <SocialNetworks />
+      </div>
       <!-- Image -->
-      <div
-        class="hidden lg:block absolute bottom-0 right-0 md:w-1/2 h-full w-full -z-10"
-      >
+      <div class="absolute bottom-0 md:relative md:w-1/2 h-full w-full -z-10">
         <img
           class="image"
           src="/laser/images/hero-img.png"
@@ -67,8 +67,6 @@ const networks = await getNetworks();
 
 <style>
   .hero {
-    height: calc(100vh - 56px);
-    max-height: 820px;
     background:
       linear-gradient(90deg, #80cde000, #41e1d166),
       url(/laser/images/modern-hospital-hero.jpg) no-repeat center center fixed;
@@ -128,10 +126,10 @@ const networks = await getNetworks();
         margin-top: -36px;
       }
       50% {
-        margin-top: -75px;
+        margin-top: -72px;
       }
       65% {
-        margin-top: -75px;
+        margin-top: -72px;
       }
       75% {
         margin-top: -36px;

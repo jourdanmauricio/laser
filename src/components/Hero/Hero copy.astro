@@ -1,0 +1,250 @@
+---
+import Menu from '../../components/Menu/Menu.astro';
+import { getNetworks } from '../../services/networks';
+
+const networks = await getNetworks();
+---
+
+<div class="hero overflow-hidde h-screen max-h-[1024px]">
+  <Menu />
+  <div class="flex flex-col pt-10 md:px-20 h-screen max-h-full">
+    <div class="flex justify-center md:justify-between">
+      <div
+        class="text-3xl md:text-4xl flex gap-2.5 justify-center md:justify-start"
+      >
+        <h2 class="text-primary m-0">Lorem Ipsum</h2>
+        <div class="overflow-hidden font-semibold h-[2.25rem] md:h-10">
+          <ul class="text-red-500 animation mt-0">
+            <li>Lorem 1</li>
+            <li>Lorem 2</li>
+            <li>Lorem 3</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hidden gap-8 md:flex">
+        {
+          networks.facebook && (
+            <a
+              href={networks.facebook}
+              target="_blank"
+            >
+              <img
+                src="/laser/icons/facebook.svg"
+                alt="Link to Facebook"
+                width="20"
+              />
+            </a>
+          )
+        }
+        {
+          networks.instagram && (
+            <a
+              href={networks.instagram}
+              target="_blank"
+            >
+              <img
+                src="/laser/icons/instagram.svg"
+                alt="Link to Instagram"
+                width="20"
+              />
+            </a>
+          )
+        }
+        {
+          networks.whatsapp && (
+            <a
+              href={networks.whatsapp}
+              target="_blank"
+            >
+              <img
+                src="/laser/icons/whatsapp.svg"
+                alt="Link to Whatsapp"
+                width="20"
+              />
+            </a>
+          )
+        }
+      </div>
+    </div>
+
+    <div
+      class="relative flex md:flex-row items-end md:items-center h-full z-0 overflow-hidden"
+    >
+      <div class="md:w-1/2 flex flex-col gap-8 md:gap-16 z-10 p-4">
+        <p class="text-xl text-slate-950">
+          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+          consectetur, adipisci velit..."
+        </p>
+
+        <button class="btn py-2 px-8 rounded block mx-auto md:ml-0">
+          Contáctanos</button
+        >
+        <div class="flex gap-8 md:hidden justify-end">
+          {
+            networks.facebook && (
+              <a
+                href={networks.facebook}
+                target="_blank"
+              >
+                <img
+                  src="/laser/icons/facebook.svg"
+                  alt="Link to Facebook"
+                  width="20"
+                />
+              </a>
+            )
+          }
+          {
+            networks.instagram && (
+              <a
+                href={networks.instagram}
+                target="_blank"
+              >
+                <img
+                  src="/laser/icons/instagram.svg"
+                  alt="Link to Instagram"
+                  width="20"
+                />
+              </a>
+            )
+          }
+          {
+            networks.whatsapp && (
+              <a
+                href={networks.whatsapp}
+                target="_blank"
+              >
+                <img
+                  src="/laser/icons/whatsapp.svg"
+                  alt="Link to Whatsapp"
+                  width="20"
+                />
+              </a>
+            )
+          }
+        </div>
+      </div>
+      <!-- Image -->
+      <div class="absolute top-0 md:relative md:w-1/2 h-full w-full -z-10">
+        <div class="background-image"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .hero {
+    /* height: calc(100vh - 64px); */
+    /* height: calc(100vh); */
+    background:
+      linear-gradient(90deg, #80cde000, #41e1d166),
+      url(/laser/images/modern-hospital-hero.jpg) no-repeat center center fixed;
+    background-size: cover;
+  }
+  .animation {
+    animation: 6s linear 0s normal none infinite change;
+  }
+  @keyframes change {
+    0% {
+      margin-top: 0;
+    }
+    15% {
+      margin-top: 0;
+    }
+    25% {
+      margin-top: -40px;
+    }
+    40% {
+      margin-top: -40px;
+    }
+    50% {
+      margin-top: -80px;
+    }
+    65% {
+      margin-top: -80px;
+    }
+    75% {
+      margin-top: -40px;
+    }
+    85% {
+      margin-top: -40px;
+    }
+    100% {
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 769px) {
+    @keyframes change {
+      0% {
+        margin-top: 0;
+      }
+      15% {
+        margin-top: 0;
+      }
+      25% {
+        margin-top: -36px;
+      }
+      40% {
+        margin-top: -36px;
+      }
+      50% {
+        margin-top: -72px;
+      }
+      65% {
+        margin-top: -72px;
+      }
+      75% {
+        margin-top: -36px;
+      }
+      85% {
+        margin-top: -36px;
+      }
+      100% {
+        margin-top: 0;
+      }
+    }
+  }
+  .background-container {
+    position: relative;
+    width: 100%;
+    /* height: 100%; */
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    animation: changeBackground 20s infinite;
+    opacity: 0;
+  }
+
+  @keyframes changeBackground {
+    0% {
+      background-image: url('/laser/images/hero-img.png');
+      opacity: 1;
+    }
+
+    33% {
+      background-image: url('/laser/images/hero-img1.png');
+      opacity: 0;
+    }
+
+    66% {
+      background-image: url('/laser/images/hero-img2.png');
+      /* opacity: 1;  */
+      /* display: block; */
+    }
+    100% {
+      background-image: url('/laser/images/hero-img.png');
+      /* opacity: 1;  */
+      /* display: block; */
+    }
+  }
+</style>
