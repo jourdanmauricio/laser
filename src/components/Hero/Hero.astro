@@ -1,14 +1,13 @@
 ---
-// import Menu from '../../components/Menu/Menu.astro';
 import { getNetworks } from '../../services/networks';
-import SocialNetworks from '../Footer/SocialNetworks.astro';
+import SocialNetworks from '../SocialNetworks/SocialNetworks.astro';
 
 const networks = await getNetworks();
 ---
 
 <div class="hero relative overflow-hidden">
-  <!-- <Menu /> -->
-  <div class="shape h-[60vh] 2xl:h-[45vh]">
+  <!-- wave -->
+  <div class="shape h-[40vh] md:h-[60vh] 2xl:h-[45vh]">
     <img
       class="w-full h-full"
       src="/laser/images/hero-shape.png"
@@ -153,8 +152,6 @@ const networks = await getNetworks();
 
   .image {
     position: absolute;
-    /* left: 0;
-    bottom: 0; */
     width: 100%;
     height: 100%;
     object-fit: contain;
