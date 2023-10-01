@@ -2,7 +2,7 @@
 import '@fontsource/poppins';
 import '@fontsource/roboto';
 
-// import Menu from '../components/Menu/Menu.astro';
+import Menu from '../components/Menu/Menu.astro';
 import Footer from '../components/Footer/Footer.astro';
 import { ViewTransitions } from 'astro:transitions';
 
@@ -38,8 +38,8 @@ const { pageTitle = 'Componentrs', description = '' } = Astro.props;
     <title>{pageTitle}</title>
     <ViewTransitions />
   </head>
-  <body class="max-w-[1440px]">
-    <!-- <Menu /> -->
+  <body>
+    <Menu />
     <slot />
     <Footer />
     <style is:global>
@@ -58,11 +58,11 @@ const { pageTitle = 'Componentrs', description = '' } = Astro.props;
 
       html,
       body {
-        max-width: 1440px;
+        /* max-width: 1440px; */
         margin: 0 auto;
         /* scroll-behavior: smooth; */
         font-family: var(--primary-font);
-        background-color: #e2e8f0;
+        /* background-color: #e2e8f0; */
         font-size: 1rem;
       }
 

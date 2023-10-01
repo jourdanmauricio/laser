@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 
 import Hero from '../components/Hero/Hero.astro';
-import MiniCard from '../components/MiniCard/MiniCard.astro';
 import Card from '../components/Card/Card.astro';
 
 import { getTratamientos } from '../services/tratamientos';
@@ -13,80 +12,25 @@ const tratamientos = await getTratamientos();
 <Layout pageTitle="Welcome to Astro.">
   <Hero />
   <main class="px-10 py-10 md:py-0">
-    <section
-      class="hidden md:flex md:flex-row justify-center items-center md:-translate-y-1/2 gap-16"
-    >
-      <MiniCard
-        title="Consultorios"
-        content="Días y horarios por localidad"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
-          fill="var(--primary-color)"
-          class="bi bi-geo-alt-fill block mx-auto"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
-          ></path>
-        </svg>
-      </MiniCard>
-      <MiniCard
-        title="Consultorios"
-        content="Días y horarios por localidad"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
-          fill="var(--primary-color)"
-          class="bi bi-geo-alt-fill block mx-auto"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
-          ></path>
-        </svg>
-      </MiniCard>
-      <MiniCard
-        title="Consultorios"
-        content="Días y horarios por localidad"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
-          fill="var(--primary-color)"
-          class="bi bi-geo-alt-fill block mx-auto"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
-          ></path>
-        </svg>
-      </MiniCard>
-    </section>
+    <p class="font-sans ...">1The quick brown fox ...</p>
+    <p class="font-serif ...">The quick brown fox ...</p>
+    <p class="font-mono ...">The quick brown fox ...</p>
+    <p>Prueba</p>
+
+    <div class="flex flex-col justify-center md:flex-row p-[5%]">
+      {
+        tratamientos.map((tratamiento) => (
+          <Card
+            id={tratamiento.id}
+            title={tratamiento.title}
+            body={tratamiento.body}
+            href={tratamiento.href}
+            image={tratamiento.image}
+          />
+        ))
+      }
+    </div>
   </main>
-
-  <p class="font-sans ...">1The quick brown fox ...</p>
-  <p class="font-serif ...">The quick brown fox ...</p>
-  <p class="font-mono ...">The quick brown fox ...</p>
-
-  <div class="flex flex-col justify-center md:flex-row p-[5%]">
-    {
-      tratamientos.map((tratamiento) => (
-        <Card
-          id={tratamiento.id}
-          title={tratamiento.title}
-          body={tratamiento.body}
-          href={tratamiento.href}
-          image={tratamiento.image}
-        />
-      ))
-    }
-  </div>
   <style>
     /* svg {
       fill: var(--primary-color);
