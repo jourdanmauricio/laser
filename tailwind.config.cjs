@@ -8,6 +8,11 @@ module.exports = {
       fontFamily: {
         primary: ['poppins', 'Inter', 'ui-sans-serif', 'sans-serif'],
         title: ['roboto', 'Inter', ...defaultTheme.fontFamily.sans],
+        dancing: [
+          'Dancing Script Variable',
+          'Inter',
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
       colors: {
         primary: 'var(--primary-color)',
