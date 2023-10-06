@@ -7,18 +7,18 @@ const networks = await getNetworks();
 
 <div class="hero relative overflow-hidden">
   <!-- wave -->
-  <div class="shape h-[40vh] md:h-[60vh] 2xl:h-[45vh]">
-    <img
-      class="w-full h-full"
-      src="/laser/images/hero-shape.png"
-      alt=""
-    />
-  </div>
-  <div
-    class="relative flex flex-col md:px-20 h-full max-h-full max-w-[1440px] mx-auto"
-  >
+  <div class="relative flex flex-col h-full max-h-full">
     <div class="z-0 h-full">
-      <div class="flex flex-col z-10 text-primary h-full px-4 pt-5 lg:pt-10">
+      <div class="shape h-[40vh] md:h-[60vh] 2xl:h-[45vh] -z-10">
+        <img
+          class="w-full h-full"
+          src="/laser/images/hero-shape.png"
+          alt="Background Wave"
+        />
+      </div>
+      <div
+        class="flex flex-col z-10 text-primary h-full px-4 pt-5 lg:pt-10 max-w-[1440px] md:px-20 mx-auto"
+      >
         <div
           class="text-3xl md:text-4xl flex gap-2.5 justify-center md:justify-start mt-20"
         >
@@ -45,19 +45,19 @@ const networks = await getNetworks();
       </div>
       <!-- Image -->
       <div
-        class="hidden lg:block absolute bottom-0 right-0 md:w-1/2 h-full w-full -z-10"
+        class="hidden lg:block absolute bottom-0 right-0 md:w-1/2 h-full w-full -z-20"
       >
         <img
           class="image"
-          src="/laser/images/hero-img.png"
+          src="/laser/images/hero-medico-1.png"
         />
         <img
           class="image"
-          src="/laser/images/hero-img1.png"
+          src="/laser/images/hero-medico-2.png"
         />
         <img
           class="image"
-          src="/laser/images/hero-img2.png"
+          src="/laser/images/hero-medico-3.png"
         />
       </div>
     </div>
