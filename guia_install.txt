@@ -1,0 +1,22 @@
+// guia_instal.txt
+
+1- Clono el proyecto
+
+## con ssh
+git clone git@github.com:jourdanmauricio/laser.git
+
+## con http
+git clone https://github.com/jourdanmauricio/laser.git
+
+2-  Creo el archivo .env en raíz
+# BACKEND='http://localhost:3000/v1'
+BACKEND='https://api.lumau.com.ar/v1'
+URL='https://jourdanmauricio.github.io/laser'
+
+3- Instalo las dependencias
+npm install
+
+4- Levanto un servidor para desarrollo
+npm run dev
+
+
