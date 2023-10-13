@@ -2,6 +2,11 @@
 import { getNetworks } from '../../services/networks';
 import SocialNetworks from '../SocialNetworks/SocialNetworks.astro';
 
+import medico1 from '@assets/images/home/hero-medico-1.webp';
+import medico2 from '@assets/images/home/hero-medico-2.webp';
+import medico3 from '@assets/images/home/hero-medico-3.webp';
+import wave from '@assets/images/home/hero-wave.png';
+
 const networks = await getNetworks();
 ---
 
@@ -12,7 +17,7 @@ const networks = await getNetworks();
       <div class="shape h-[40vh] md:h-[60vh] 2xl:h-[45vh] -z-10">
         <img
           class="w-full h-full"
-          src="/images/hero-shape.png"
+          src={wave.src}
           alt="Background Wave"
         />
       </div>
@@ -49,15 +54,15 @@ const networks = await getNetworks();
       >
         <img
           class="image"
-          src="/images/hero-medico-1.png"
+          src={medico1.src}
         />
         <img
           class="image"
-          src="/images/hero-medico-4.png"
+          src={medico2.src}
         />
         <img
           class="image"
-          src="/images/hero-medico-3.png"
+          src={medico3.src}
         />
       </div>
     </div>
@@ -70,7 +75,8 @@ const networks = await getNetworks();
     max-height: 820px;
     background:
       linear-gradient(90deg, #80cde000, #41e1d166),
-      url(/images/modern-hospital-hero.jpg) no-repeat center center fixed;
+      url(../../assets/images/home/modern-hospital-hero.webp) no-repeat center
+        center fixed;
     background-size: cover;
   }
   .shape {
