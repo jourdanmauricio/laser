@@ -56,11 +56,9 @@
     >
       <li>
         <a
-          href="/laser"
+          href="/"
           class={`${
-            Astro.url.pathname.replaceAll('/', '') === 'laser'
-              ? 'text-secondary'
-              : ''
+            Astro.url.pathname === '/' ? 'text-secondary' : ''
           } menu__item anim__bottom to__center`}
           >Home</a
         >
@@ -68,7 +66,7 @@
       <li>
         <a
           class={`${
-            Astro.url.pathname.replaceAll('/', '') === 'laseracerca-de-mi'
+            Astro.url.pathname.replaceAll('/', '') === 'acerca-de-mi'
               ? 'text-secondary'
               : ''
           } menu__item anim__bottom to__center`}
@@ -79,7 +77,7 @@
       <li>
         <a
           class={`${
-            Astro.url.pathname.replaceAll('/', '') === 'lasertratamientos'
+            Astro.url.pathname.replaceAll('/', '') === 'tratamientos'
               ? 'text-secondary'
               : ''
           } menu__item anim__bottom to__center`}
@@ -90,7 +88,7 @@
       <li>
         <a
           class={`${
-            Astro.url.pathname.replaceAll('/', '') === 'laserblog'
+            Astro.url.pathname.replaceAll('/', '') === 'blog'
               ? 'text-secondary'
               : ''
           } menu__item anim__bottom to__center`}
@@ -101,7 +99,7 @@
       <li>
         <a
           class={`${
-            Astro.url.pathname.replaceAll('/', '') === 'lasercontacto'
+            Astro.url.pathname.replaceAll('/', '') === 'contacto'
               ? 'text-secondary'
               : ''
           } menu__item anim__bottom to__center`}

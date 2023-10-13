@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Menu from '../../components/Menu/Menu.astro';
 import { getTratamiento } from '../../services/tratamientos';
 
 const { id } = Astro.params;
@@ -16,7 +15,6 @@ export const getStaticPaths = () => {
 
 <Layout pageTitle="Welcome to Astro.">
   <main class="min-h-screen">
-    <Menu />
     <section class="p-10">
       <h1
         transition:name={tratamiento.title}
