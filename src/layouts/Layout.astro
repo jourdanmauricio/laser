@@ -6,13 +6,21 @@ import '@fontsource-variable/dancing-script';
 import Menu from '../components/Menu/Menu.astro';
 import Footer from '../components/Footer/Footer.astro';
 import { ViewTransitions } from 'astro:transitions';
+import favicon from '../icons/favicon.svg';
 
 interface Props {
-  pageTitle: string;
+  title: string;
   description?: string;
+  image?: string;
+  slug: string;
 }
 
-const { pageTitle = 'Componentrs', description = '' } = Astro.props;
+const {
+  title,
+  description = 'Doctora Laura Rodriguez',
+  image = '/assets/laura-rodriguez.jpg',
+  slug,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -21,22 +29,76 @@ const { pageTitle = 'Componentrs', description = '' } = Astro.props;
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Astro description"
+      content={description}
     />
     <meta
       name="viewport"
       content="width=device-width"
     />
+
+    <link
+      rel="canonical"
+      href=`${URL}/${slug}/`
+    />
+
+    <!-- Twitter Card data -->
+    <meta
+      name="twitter:card"
+      content="summary"
+    />
+    <meta
+      name="twitter:site"
+      content="@publisher_handle"
+    />
+    <meta
+      name="twitter:title"
+      content={title}
+    />
+    <meta
+      name="twitter:description"
+      content={description}
+    />
+    <meta
+      name="twitter:creator"
+      content="@author_handle"
+    />
+    <!-- Twitter Summary card images. Igual o superar los 200x200px -->
+    <meta
+      name="twitter:image"
+      content=`<a href=${image}>{image}</a>`
+    />
+    <!-- Open Graph data -->
+    <meta
+      property="og:title"
+      content={title}
+    />
+    <meta
+      property="og:type"
+      content="article"
+    />
+    <!-- Ver si agregar baseurl -->
+    <meta
+      property="og:url"
+      content={slug}
+    />
+    <meta
+      property="og:image"
+      content={image}
+    />
+    <meta
+      property="og:description"
+      content={description}
+    />
     <link
       rel="icon"
-      type="image/svg+xml"
-      href="/favicon.svg"
+      type="image/jpeg"
+      href={favicon.src}
     />
     <meta
       name="generator"
       content={Astro.generator}
     />
-    <title>{pageTitle}</title>
+    <title>{title}</title>
     <ViewTransitions />
   </head>
   <body>
