@@ -1,14 +1,14 @@
 const tratamientos = [
   {
     id: 1,
-    href: '/tratamientos/1',
+    href: '/tratamientos/1/',
     title: 'Noteworthy technology acquisitions 2021',
     body: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
     image: '/images/card-example-1.jpeg',
   },
   {
     id: 2,
-    href: '/tratamientos/2',
+    href: '/tratamientos/2/',
     title: 'Noteworthy technology 2023',
     body: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
     image: '/images/card-example-2.jpeg',
