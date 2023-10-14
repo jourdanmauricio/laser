@@ -5,6 +5,7 @@ import Hero from '../components/Hero/Hero.astro';
 import Card from '../components/Card/Card.astro';
 
 import { getTratamientos } from '../services/tratamientos';
+import PostsHome from '@components/Home/PostsHome/PostsHome.astro';
 
 const tratamientos = await getTratamientos();
 ---
@@ -15,6 +16,7 @@ const tratamientos = await getTratamientos();
 >
   <Hero />
   <main class="px-10 py-10 md:py-0">
+    <PostsHome />
     <p class="font-sans ...">1The quick brown fox ...</p>
     <p class="font-serif ...">The quick brown fox ...</p>
     <p class="font-mono ...">The quick brown fox ...</p>

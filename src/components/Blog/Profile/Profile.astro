@@ -1,0 +1,26 @@
+---
+import { getAuthor } from '@services/author';
+
+const author = await getAuthor();
+
+interface Props {
+  createdAt: string;
+}
+
+const { createdAt } = Astro.props;
+---
+
+<div class="flex gap-4 items-center">
+  <img
+    class="rounded-full"
+    width="70"
+    height="70"
+    src={author.image}
+    alt={author.altImage}
+  />
+
+  <div class="flex flex-col">
+    <span>{author.name}</span>
+    <small>{createdAt.split(' ')[0]}</small>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getPosts } from '@services/posts';
+import Profile from '@components/Blog/Profile/Profile.astro';
+import ShareButtons from '@components/Blog/ShareButtons/ShareButtons.astro';
+import '@styles/quill.snow.css';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map(
+    ({ slug, title, content, image, altImage, excerpt, createdAt }) => {
+      // console.log('content', content);
+      return {
+        params: { slug },
+        props: {
+          title,
+          slug,
+          content,
+          image,
+          altImage,
+          description: excerpt,
+          excerpt,
+          createdAt,
+        },
+      };
+    }
+  );
+}
+
+const {
+  title,
+  content,
+  image,
+  altImage,
+  slug,
+  description,
+  excerpt,
+  createdAt,
+} = Astro.props;
+---
+
+<Layout
+  title={title}
+  {description}
+  {slug}
+  {image}
+>
+  <section class="mt-8 px-4 lg:px-16">
+    <h2
+      class="text-3xl text-center"
+      transition:name={title}
+    >
+      {title}
+    </h2>
+    <p
+      class="pt-8 text-base"
+      transition:name={excerpt}
+    >
+      {excerpt}
+    </p>
+
+    <div class="w-11/12 sm:2/3 lg:w-1/2 mx-auto pt-8">
+      <img
+        transition:name={image}
+        class="w-full h-full"
+        src={image}
+        alt={altImage}
+      />
+    </div>
+
+    <div class="ql-snow">
+      <div class="ql-editor">
+        <Fragment set:html={content} />
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center py-8">
+      <Profile createdAt={createdAt} />
+
+      <ShareButtons title={title} />
+    </div>
+  </section>
+</Layout>
